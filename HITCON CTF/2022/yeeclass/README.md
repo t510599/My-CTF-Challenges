@@ -14,7 +14,7 @@ We have developed a new E-learning system called "yeeclass", please give it a tr
 See [exploit/brute.py](exploit/brute.py)
 
 First, the access control of submission list is broken.  
-If the user does not login, its `userclass` in session would be NULL, which can bypass `userclass <= PERM_TA (0)`. By visiting `submission.php?homeworkid=1` without login, one can retrieve the timestamp of flag submission.  
+If the user does not login, its `userclass` in session would be NULL, which can bypass `userclass >= PERM_TA (0)`. By visiting `submission.php?homeworkid=1` without login, one can retrieve the timestamp of flag submission.  
 
 With the knowledge of how `uniqid()` works ([php/php-src: ext/standard/uniqid.c](https://github.com/php/php-src/blob/master/ext/standard/uniqid.c)), we can transform the date string into timestamp, and derive the id from it.
 
