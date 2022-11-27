@@ -1,7 +1,7 @@
 # yeeclass
 - Tags: `Web`
-- Score: ?/500
-- Solves: ?/?
+- Score: 215/500
+- Solves: 52
 
 ## Description
 Due to the security concerns, we are going to phase out the old LMS system.  
