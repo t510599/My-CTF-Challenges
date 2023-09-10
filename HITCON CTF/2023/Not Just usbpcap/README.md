@@ -107,7 +107,7 @@ By the way, ffmpeg also recognizes AAC packed in ADTS stream, so one can substit
 <details>
 <summary>Spoiler</summary>
 
-`hitcon{secret-flags-unveild-with-bluetooth-radio}`
+`hitcon{secret-flags-unveiled-with-bluetooth-radio}`
 </details>
 
 ---
