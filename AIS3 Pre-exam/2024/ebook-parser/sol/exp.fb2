@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE replace [<!ENTITY ent SYSTEM "file:///flag"> ]>
+<FictionBook xmlns="http://www.gribuser.ru/xml/fictionbook/2.0" xmlns:l="http://www.w3.org/1999/xlink">
+<description>
+    <title-info>
+        <genre>antique</genre>
+        <author><first-name>Flag</first-name><last-name>Holder</last-name></author>
+        <book-title>Give Me Flag</book-title>
+        <lang>&ent;</lang>
+    </title-info>
+    <document-info>
+        <author><first-name>Flag</first-name><last-name>Holder</last-name></author>
+        <program-used>calibre 7.9.0</program-used>
+        <date>27.4.2024</date>
+        <id>0eb8ce1f-e81d-4f74-b319-2c9da8c46128</id>
+        <version>1.0</version>
+    </document-info>
+    <publish-info>
+        <year>0101</year>
+    </publish-info>
+</description>
+<body>
+<section>
+<p><strong>Give Me Flag</strong></p>
+</section>
+</body>
+
+</FictionBook>
