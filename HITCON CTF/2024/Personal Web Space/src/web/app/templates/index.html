@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Web Space - Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas/4.2.5/tocas.min.css" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocas/4.2.5/tocas.min.js" crossorigin="anonymous"></script>
+    <script src="static/snackbar.js"></script>
+    <link rel="stylesheet" href="static/snackbar.css">
+</head>
+<body>
+    <div class="ts-center">
+        <div class="ts-header is-center-aligned is-huge is-icon">
+            <i class="ts-icon is-globe-icon"></i>
+            Personal Web Space
+            <div class="ts-text is-description">
+                Registration
+            </div>
+        </div>
+        <div class="ts-space"></div>
+        <div class="ts-segment">
+            <form action="/register" method="post" enctype="multipart/form-data" id="form" name="form">
+                <div class="ts-wrap is-vertical is-center-aligned">
+                    <div>
+                        <div class="ts-text is-label">Team Token</div>
+                        <div class="ts-input has-top-spaced">
+                            <input type="text" name="token" placeholder="Team Token" required>
+                        </div>
+                    </div>
+                    <div>
+                        {{ turnstile }}
+                    </div>
+                    <button class="ts-button">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="ts-modal is-large" data-name="account-modal">
+        <div class="content">
+            <div class="ts-content is-center-aligned is-vertically-padded">
+            <div class="ts-header is-icon">
+                <span class="ts-icon is-user-icon"></span>
+                <span class="title"></span>
+            </div>
+            <div class="ts-content">
+                <div class="ts-segment is-tertiary">
+                    <div class="ts-row">
+                        <span>Username: </span><code id="username"><pre></pre></code>
+                    </div>
+                    <div class="ts-row">
+                        <span>Password: </span><code id="password"><pre></pre></code>
+                    </div>
+                    <div class="ts-row">
+                        <span>URL: </span><a id="space_url" href="" target="_blank"></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="ts-divider"></div>
+            <div class="ts-content is-center-aligned">
+                <button class="ts-button" data-toggle="account-modal:is-visible">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ts-snackbar is-fading-up">
+        <div class="content"></div>
+    </div>
+
+    <script src="static/util.js"></script>
+    <script>
+        const host = "http://www.pws.chal.hitconctf.com";
+
+        const $submit = dqs('form button.ts-button');
+        const $modal = dqs('.ts-modal[data-name="account-modal"]');
+        const $title = $modal.dqs('.ts-header .title');
+        const $username = $modal.dqs('#username pre');
+        const $password = $modal.dqs('#password pre');
+        const $url = $modal.dqs('#space_url');
+
+        async function submit() {
+            const formData = new FormData(form);
+
+            try {
+                const res = await fetch(form.action, {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await res.json();
+                if (!res.ok) throw data.error;
+
+                if (res.status === 200) {
+                    $title.textContent = "Account Updated";
+                } else if (res.status === 201) {
+                    $title.textContent = "Account Created";
+                }
+
+                $username.textContent = data.username;
+                $password.textContent = data.password;
+                $url.href = $url.textContent = `${host}/~${data.username}`;
+
+                $modal.classList.add('is-visible');
+                $submit.classList.add('is-disabled');
+                $submit.disabled = true;
+            } catch (err) {
+                turnstile.reset();
+                ts('.ts-snackbar').snackbar({ 
+                    content: err
+                });
+            }
+        }
+
+        form.on("submit", ev => {
+            ev.preventDefault();
+            submit();
+        });
+    </script>
+</body>
+</html>

@@ -1,5 +1,9 @@
 # My CTF Challenges
 
+## HITCON CTF 2024
+- [Personal Web Space 1](<HITCON CTF/2024/Personal Web Space#personal-web-space-1>) (`misc`, `web`)
+- [Personal Web Space 2](<HITCON CTF/2024/Personal Web Space#personal-web-space-2>) (`misc`)
+
 ## AIS3 2024 Pre-Exam / MyFirstCTF 2024
 - [Ebook Parser](<AIS3 Pre-exam/2024/ebook-parser>) (`Web` `Easy`)
 - [Hash Guesser](<AIS3 Pre-exam/2024/hash-guesser>) (`Misc` `Easy`)

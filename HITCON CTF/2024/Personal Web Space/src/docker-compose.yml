@@ -1,0 +1,45 @@
+services:
+  web:
+    build:
+      context: ./web
+    ports:
+      - "80:80"
+    volumes:
+      - ./apache2-logs:/var/log/apache2
+      - ./home/webuser:/home/webuser # Fake NFS
+    # environment:
+      # - SCOREBOARD_URL=
+      # - TURNSTILE_SITE_KEY=
+      # - TURNSTILE_SECRET_KEY=
+    networks:
+      shared-hosting:
+        ipv4_address: 172.26.0.10
+    domainname: hitcon
+    hostname: node10
+    stop_signal: SIGKILL
+  login:
+    build:
+      context: ./login
+    ports:
+      - "10022:22"
+    volumes:
+      - ./home/webuser:/home/webuser # Fake NFS
+    networks:
+      shared-hosting:
+        ipv4_address: 172.26.0.20
+    domainname: hitcon
+    hostname: node20
+    stop_signal: SIGKILL
+  internal:
+    image: "httpd:alpine"
+    volumes:
+      - ./flag.txt:/usr/local/apache2/htdocs/flag.txt
+    networks:
+      shared-hosting:
+        ipv4_address: 172.26.1.1
+    hostname: internal
+networks:
+  shared-hosting:
+    ipam:
+      config:
+        - subnet: 172.26.0.0/23

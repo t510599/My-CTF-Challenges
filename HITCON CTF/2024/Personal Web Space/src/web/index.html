@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Web Space</title>
+    <!-- Minified version -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="http://dash.pws.chal.hitconctf.com/" target="_blank">Register</a>
+        </nav>
+        <h1>Personal Web Space</h1>
+        <p>Your dream space to create your own website.</p>
+    </header>
+
+    <main>
+        <p>Welcome to your personal web space! This is where you can upload your own web files to create your own website.</p>
+
+        <p>Here are instructions for uploading web files:</p>
+        <ol>
+            <li>
+                <p><strong>Preparing Your Files</strong></p>
+                <ul>
+                    <li>Create the web files you want to upload (HTML, CSS, JavaScript, images, etc.) on your local computer.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Connecting to Login Node</strong></p>
+                <ul>
+                    <li><del>Use FTP to connect to the login node.</del> We have deprecated the insecure plaintext FTP.</li>
+                    <li>Use SFTP (SSH File Transfer Protocol) to connect to login node.
+                        <ul>
+                            <li>Hostname: file.pws.chal.hitconctf.com</li>
+                            <li>Port: 10022</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Creating to Your Public HTML Directory</strong></p>
+                <ul>
+                    <li>Once connected, create the <code>public_html</code> directory within your home directory. This is where you'll upload your web files.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Uploading Your Files</strong></p>
+                <ul>
+                    <li>Select the files you want to upload from your local computer and upload them into the
+                        <code>public_html</code> directory on the server.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Setting File Permissions</strong></p>
+                <ul>
+                    <li>Ensure that the permissions for your uploaded files are set correctly, so our web server can fetch your files.</li>
+                    <li>Generally, files should have permissions of 604 (<code>-rw----r--</code>) and directories should have permissions of 705 (<code>drwx---r-x</code>).</li>
+                    <li>You can use the <code>chmod</code> command to adjust permissions if needed.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Accessing Your Website</strong></p>
+                <ul>
+                    <li>Once your files are uploaded, you can access your website using a URL constructed with service node's address and your username.</li>
+                    <li>The URL follows this format: <code>http://www.pws.chal.hitconctf.com/~$username/</code>.</li>
+                </ul>
+            </li>
+        </ol>
+    </main>
+
+    <footer>
+        <p>&copy; Personal Web Space</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+User-agent: *
+# Sweet Flag 1
+Disallow: /flag.txt
+# Apache2 Config Backup, do not touch it!
+Disallow: /apache2.zip
