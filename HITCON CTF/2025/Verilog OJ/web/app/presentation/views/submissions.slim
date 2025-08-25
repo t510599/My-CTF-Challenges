@@ -1,0 +1,51 @@
+h1 Submission
+
+div style="display: flex; gap: .5em"
+  | Result:
+  span style="color:#{result_color('Q')};" Q
+  = "- Queueing; "
+  span style="color:#{result_color('R')};" R
+  = "- Running; "
+  span style="color:#{result_color('RE')};" RE
+  = "- Run Error; "
+  span style="color:#{result_color('TLE')};" TLE
+  = "- Timeout; "
+  span style="color:#{result_color('AC')};" AC
+  = "- All correct; "
+  span style="color:#{result_color('WA')};" WA
+  = "- Wrong answer; "
+
+br
+
+.mdc-data-table style="width: 100%"
+  .mdc-data-table__table-container
+    table.mdc-data-table__table
+      thead
+        tr.mdc-data-table__header-row
+          th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric style="width: 0;" #
+          th.mdc-data-table__header-cell Problem
+          th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric style="width: 0;" Result
+          th.mdc-data-table__header-cell style="width: 0;" Submission Time
+      tbody.mdc-data-table__content
+        - if submissions.empty?
+          tr.mdc-data-table__row
+            td.mdc-data-table__cell colspan="4" No submissions available.
+        - else
+          - submissions.each do |submission|
+            tr.mdc-data-table__row data-id=submission.id style="cursor: pointer;"
+              td.mdc-data-table__cell.mdc-data-table__cell--numeric #{submission.id}
+              td.mdc-data-table__cell #{submission.problem.title}
+              td.mdc-data-table__cell.mdc-data-table__cell--numeric style="color:#{result_color(submission.result)};" #{submission.result}
+              td.mdc-data-table__cell.mdc-data-table__cell--numeric #{submission.created_at}
+
+javascript:
+  const $tbody = document.querySelector('tbody.mdc-data-table__content');
+  $tbody.addEventListener('click', ev => {
+    const $target = ev.target.closest('tr.mdc-data-table__row');
+    if ($target) {
+      const submissionId = $target.dataset.id;
+      if (submissionId) {
+        window.location.href = `/submission/${submissionId}`;
+      }
+    }
+  });

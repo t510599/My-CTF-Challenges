@@ -1,0 +1,97 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
+    base64 (0.3.0)
+    bigdecimal (3.2.2)
+    connection_pool (2.5.3)
+    domain_name (0.6.20240107)
+    ffi (1.17.2-aarch64-linux-gnu)
+    ffi (1.17.2-aarch64-linux-musl)
+    ffi (1.17.2-arm-linux-gnu)
+    ffi (1.17.2-arm-linux-musl)
+    ffi (1.17.2-arm64-darwin)
+    ffi (1.17.2-x86-linux-gnu)
+    ffi (1.17.2-x86-linux-musl)
+    ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
+    ffi (1.17.2-x86_64-linux-musl)
+    ffi-compiler (1.3.2)
+      ffi (>= 1.15.5)
+      rake
+    figaro (1.3.0)
+      thor (>= 0.14.0, < 2)
+    http (5.3.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.5.0)
+    http-cookie (1.0.8)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    json (2.13.2)
+    llhttp-ffi (0.5.1)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
+    logger (1.7.0)
+    mini_portile2 (2.8.9)
+    nio4r (2.7.4)
+    public_suffix (6.0.2)
+    puma (6.6.1)
+      nio4r (~> 2.0)
+    rack (3.2.0)
+    rack-session (2.1.1)
+      base64 (>= 0.1.0)
+      rack (>= 3.0.0)
+    rake (13.3.0)
+    redcarpet (3.6.1)
+    redis-client (0.25.2)
+      connection_pool
+    roda (3.95.0)
+      rack
+    sequel (5.95.1)
+      bigdecimal
+    sidekiq (8.0.7)
+      connection_pool (>= 2.5.0)
+      json (>= 2.9.0)
+      logger (>= 1.6.2)
+      rack (>= 3.1.0)
+      redis-client (>= 0.23.2)
+    slim (5.2.1)
+      temple (~> 0.10.0)
+      tilt (>= 2.1.0)
+    sqlite3 (1.7.3)
+      mini_portile2 (~> 2.8.0)
+    temple (0.10.4)
+    thor (1.4.0)
+    tilt (2.6.1)
+
+PLATFORMS
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux-gnu
+  arm-linux-musl
+  arm64-darwin
+  x86-linux-gnu
+  x86-linux-musl
+  x86_64-darwin
+  x86_64-linux-gnu
+  x86_64-linux-musl
+
+DEPENDENCIES
+  figaro
+  http
+  json
+  puma
+  rack-session
+  rake
+  redcarpet
+  roda
+  sequel
+  sidekiq
+  slim
+  sqlite3 (~> 1.4)
+
+BUNDLED WITH
+   2.7.1

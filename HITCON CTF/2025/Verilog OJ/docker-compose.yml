@@ -1,0 +1,17 @@
+services:
+  oj:
+    build: .
+    ports:
+      - "${PORT:-9292}:9292"
+    environment:
+      - SESSION_SECRET=l9oYbmXGbiUocTRGKA9wf98JA5vkfam4C9gBLY3D-WOIPtZdNC8_3pT668_CDtrZZAUx4syXQ9ixA3biaNIuSQ
+      - REDIS_URL=redis://redis:6379/0
+      - REDIS_PROVIDER=REDIS_URL
+      - DATABASE_URL=sqlite://app/db/store/voj.db
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '512M'
+  redis:
+    image: "redis:alpine"

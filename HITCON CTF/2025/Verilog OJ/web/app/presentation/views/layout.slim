@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Verilog OJ
+    meta name="viewport" content="width=device-width, initial-scale=1.0"/
+    meta http-equiv="X-UA-Compatible" content="IE=edge"/
+    link href="https://unpkg.com/normalize.css@8.0.1/normalize.css" rel="stylesheet"
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+    link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet"
+    script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"
+    link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"
+    == assets([:css])
+  body
+    header.mdc-top-app-bar
+      .mdc-top-app-bar__row
+        section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start
+          button.material-icons.mdc-top-app-bar__navigation-icon.mdc-icon-button.mdc-ripple-surface menu
+          span.mdc-top-app-bar__title Verilog OJ
+    == render :drawer
+    div.mdc-drawer-app-content.mdc-top-app-bar--fixed-adjust
+      main.container
+        == render :flash
+        == yield
+    == assets([:js])

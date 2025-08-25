@@ -1,0 +1,18 @@
+- if flash[:error]
+  - msg = flash[:error]
+- elsif flash[:notice]
+  - msg = flash[:notice]
+- elsif flash[:success]
+  - msg = flash[:success]
+
+- if !msg.nil?
+  aside.mdc-snackbar
+    .mdc-snackbar__surface
+      .mdc-snackbar__label #{msg}
+
+  javascript:
+    const { MDCSnackbar } = mdc.snackbar;
+    const mdcSnackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
+    mdcSnackbar.open({
+      timeout: 5000
+    });

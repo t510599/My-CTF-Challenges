@@ -1,0 +1,56 @@
+body {
+  display: flex;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.mdc-drawer-app-content {
+  flex: auto;
+  overflow: auto;
+  position: relative;
+}
+
+main {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.app-bar {
+  position: absolute;
+}
+
+.mdc-top-app-bar {
+  z-index: 7;
+}
+
+#editor {
+  width: 100%;
+  height: 60vh;
+  border: 1px solid #ced4da;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1em;
+}
+
+.mdc-select--outlined .mdc-select__anchor .mdc-select__selected-text::before {
+  content: none;
+}
+
+pre:has(code) {
+  background-color: #f8f9fa;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+code {
+  font-family: 'Cascadia Code', monospace;
+}
+
+code:not(pre > code) {
+  background-color: #f8f9fa;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}

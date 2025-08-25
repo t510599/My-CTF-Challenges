@@ -1,5 +1,8 @@
 # My CTF Challenges
 
+## HITCON CTF 2025
+- [Verilog OJ](<HITCON CTF/2025/Verilog OJ/>) (`web`, `misc`)
+
 ## HITCON CTF 2024
 - [Personal Web Space 1](<HITCON CTF/2024/Personal Web Space#personal-web-space-1>) (`misc`, `web`)
 - [Personal Web Space 2](<HITCON CTF/2024/Personal Web Space#personal-web-space-2>) (`misc`)

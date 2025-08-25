@@ -1,0 +1,10 @@
+h1 #{problem.title}
+
+== markdown problem.description
+
+.container style="text-align: end"
+  a.mdc-button.mdc-button--raised.mdc-button--icon-leading href="/judge?id=#{problem.id}"
+    span.mdc-button__ripple
+    span.mdc-button__focus-ring
+    i.material-icons.mdc-button__icon send
+    span.mdc-button__label Submit Now

@@ -1,0 +1,4 @@
+development:
+  SESSION_SECRET: l9oYbmXGbiUocTRGKA9wf98JA5vkfam4C9gBLY3D-WOIPtZdNC8_3pT668_CDtrZZAUx4syXQ9ixA3biaNIuSQ
+  REDIS_URL: redis://localhost:6379/0
+  DATABASE_URL: sqlite://app/db/store/voj.db

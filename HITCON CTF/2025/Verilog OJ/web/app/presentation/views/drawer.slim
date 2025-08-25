@@ -1,0 +1,17 @@
+aside.mdc-drawer.mdc-drawer--dismissible.mdc-top-app-bar--fixed-adjust
+  .mdc-drawer__content
+    nav.mdc-deprecated-list
+      - @routes = [ \
+          { href: '/problem', icon: 'description', text: 'Problems' }, \
+          { href: '/submission', icon: 'list', text: 'Submissions' }, \
+          { href: '/judge', icon: 'upload', text: 'Submit' } \
+        ]
+      a class="mdc-deprecated-list-item #{'mdc-deprecated-list-item--activated' if request.path == '/'}" href="/"
+        span.mdc-deprecated-list-item__ripple
+        i.material-icons.mdc-deprecated-list-item__graphic home
+        span.mdc-deprecated-list-item__text Home
+      - for item in @routes
+        a class="mdc-deprecated-list-item #{'mdc-deprecated-list-item--activated' if request.path.start_with? item[:href]}" href=item[:href]
+          span.mdc-deprecated-list-item__ripple
+          i.material-icons.mdc-deprecated-list-item__graphic = item[:icon]
+          span.mdc-deprecated-list-item__text = item[:text]

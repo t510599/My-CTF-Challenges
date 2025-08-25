@@ -1,0 +1,21 @@
+h1 Submission #{submission.id}
+
+p
+  | Problem:&nbsp;
+  a href="/problem/#{submission.problem.id}" #{submission.problem.title}
+
+p
+  | Result:&nbsp;
+  span style="color:#{result_color submission.result}" #{submission.result}
+
+h2 Code
+pre.mdc-typography--body1
+  code.mdc-typography--code
+    / = submission.code
+    = "<hidden>"
+
+h2 Output
+pre.mdc-typography--body1
+  code.mdc-typography--code
+    / = submission.output
+    = "<hidden>"

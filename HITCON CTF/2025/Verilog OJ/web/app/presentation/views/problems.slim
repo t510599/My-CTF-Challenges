@@ -1,0 +1,32 @@
+h1 Problems
+
+.mdc-data-table style="width: 100%"
+  .mdc-data-table__table-container
+    table.mdc-data-table__table
+      thead
+        tr.mdc-data-table__header-row
+          th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric style="width: 0;" Problem ID
+          th.mdc-data-table__header-cell Problem Title
+          th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric style="width: 0;" Submissions
+      tbody.mdc-data-table__content
+        - if problems.empty?
+          tr.mdc-data-table__row
+            td.mdc-data-table__cell colspan="3" No problems available.
+        - else
+          - problems.each do |problem|
+            tr.mdc-data-table__row data-id=problem.id style="cursor: pointer;"
+              td.mdc-data-table__cell.mdc-data-table__cell--numeric #{problem.id}
+              td.mdc-data-table__cell #{problem.title}
+              td.mdc-data-table__cell.mdc-data-table__cell--numeric #{problem.submissions.count}
+
+javascript:
+  const $tbody = document.querySelector('tbody.mdc-data-table__content');
+  $tbody.addEventListener('click', ev => {
+    const $target = ev.target.closest('tr.mdc-data-table__row');
+    if ($target) {
+      const problemId = $target.dataset.id;
+      if (problemId) {
+        window.location.href = `/problem/${problemId}`;
+      }
+    }
+  });

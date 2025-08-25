@@ -1,0 +1,88 @@
+h1 Judge
+
+form#judge-form method="post" action="/judge" type="application/x-www-form-urlencoded"
+  .container
+    .mdc-select.mdc-select--outlined style="width: 100%"
+      input type="hidden" name="problem" autocomplete="off"
+      .mdc-select__anchor
+        span.mdc-notched-outline
+          span.mdc-notched-outline__leading
+          span.mdc-notched-outline__notch
+            span.mdc-floating-label Select Problem
+          span.mdc-notched-outline__trailing
+        span.mdc-select__selected-text-container
+          span.mdc-select__selected-text
+        span.mdc-select__dropdown-icon
+          svg.mdc-select__dropdown-icon-graphic viewBox="7 10 10 5" focusable="false"
+            polygon.mdc-select__dropdown-icon-inactive stroke="none" fill-rule="evenodd" points="7 10 12 15 17 10"
+            polygon.mdc-select__dropdown-icon-active stroke="none" fill-rule="evenodd" points="7 15 12 10 17 15"
+
+      .mdc-select__menu.mdc-menu.mdc-menu-surface.mdc-menu-surface--fullwidth
+        ul.mdc-deprecated-list
+          li.mdc-deprecated-list-item.mdc-deprecated-list-item--selected data-value=""
+            span.mdc-deprecated-list-item__ripple
+            span.mdc-deprecated-list-item__text
+          - problems.each do |problem|
+            li.mdc-deprecated-list-item data-value=problem.id
+              span.mdc-deprecated-list-item__ripple
+              span.mdc-deprecated-list-item__text #{problem.title}
+
+  .container style="display: flex; justify-content: center;"
+    #editor
+    textarea name="code" style="display: none;"
+  .container style="text-align: end;"
+    button.mdc-button.mdc-button--raised.mdc-button--icon-leading#submit-btn
+      span.mdc-button__ripple
+      span.mdc-button__focus-ring
+      i.material-icons.mdc-button__icon send
+      span.mdc-button__label Submit
+
+javascript:
+  var require = {
+    paths: { vs: 'https://unpkg.com/monaco-editor@0.52.2/min/vs' },
+    'vs/nls': {
+      availableLanguages: {
+          '*': 'en'
+      }
+    }
+  };
+script src="https://unpkg.com/monaco-editor@0.52.2/min/vs/loader.js"
+script src="https://unpkg.com/monaco-editor@0.52.2/min/vs/editor/editor.main.js"
+javascript:
+  const { MDCSelect } = mdc.select;
+  const $select = document.querySelector('.mdc-select');
+  const mdcSelect = new MDCSelect($select);
+
+  if (new URLSearchParams(window.location.search).has('id')) {
+    const problemId = new URLSearchParams(window.location.search).get('id');
+    const option = $select.querySelector(`li[data-value="${problemId}"]`);
+    if (option) {
+      mdcSelect.value = problemId;
+    }
+  }
+
+  const $link = document.createElement('link');
+  $link.setAttribute('rel', 'stylesheet');
+  $link.setAttribute('href', 'https://unpkg.com/monaco-editor@0.52.2/min/vs/editor/editor.main.css');
+  document.head.appendChild($link);
+
+  require(['vs/editor/editor.main'], function () {
+    const monacoEditor = monaco.editor.create(document.querySelector("#editor"), {
+      automaticLayout: true,
+      scrollBeyondLastLine: false,
+      language: "verilog",
+      minimap: {
+        enabled: false
+      },
+      fontFamily: `Cascadia Code`,
+      renderWhitespace: "boundary"
+    });
+
+    const $submitBtn = document.querySelector('#submit-btn');
+    $submitBtn.addEventListener('click', ev => {
+      ev.preventDefault();
+      document.querySelector('textarea[name="code"]').value = monacoEditor.getValue();
+      document.querySelector('#judge-form').submit();
+    });
+  });
+
